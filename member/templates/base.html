@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="{% static 'css/style_member.css' %}">
+<script src="{% static 'js/jquery-3.6.1.js' %}"></script>
+<script src="{% static 'js/script_member.js' %}"></script>
+</head>
+<body>
+	{% block header %}
+		<div id="header">
+			<a href="/member/main"> 회원관리 </a> &nbsp;&nbsp;&nbsp;
+			<a href="/board/list"> 게시판 </a>
+		</div>
+	{% endblock %}
+	<br>
+	{% block title %}
+		<h2> 회원관리 </h2>
+	{% endblock %}
+	<br><br>
+	{% block content %}
+		empty <br>
+	{% endblock %}
+</body>
+</html>

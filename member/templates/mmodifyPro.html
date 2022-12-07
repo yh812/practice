@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	{% block title %}
+		<h2> 회원정보수정</h2>
+	{% endblock %}
+	{% block content %}
+	<form method="post" action="mmodifyPro" name="modifyform">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<th colspan="2">
+					수정할 정보를 입력하세요
+				</th>
+			</tr>
+			<tr>
+				<th> 아이디 </th>
+				<td> &nbsp;{{dto.id}} </td>
+			</tr>
+			<tr>
+				<th rowspan="2"> 비밀번호 </th>
+				<td> <input class="input" type="password" name="passwd" maxlength="50" value="{{dto.passwd}}" autofocus> </td>
+			</tr>
+			<tr>
+				<td> <input class="input" type="password" name="repasswd" maxlength="50" value="{{dto.passwd}}">
+			</tr>
+			<tr>
+				<th> 이름 </th>
+				<td> &nbsp;{{dto.name}} </td>
+			</tr>
+			<tr>
+				<th> 이메일 </th>
+				<td>
+					<input class="input" type="text" name="email1" maxlength="25" value="{{e.0}}"
+						style="width:60px">
+					@
+					<input class="input" type="text" name="email2" maxlength="25" value="{{e.1}}"
+						style="width:70px">
+				</td>	
+			</tr>
+			<tr>
+				<th> 전화번호 </th>
+				<td>
+					{% if t %}
+						<input class="input" type="text" name="tel1" maxlength="3" value="{{t.0}}"
+						style="width:30px">
+						-<input class="input" type="text" name="tel2" maxlength="4" value="{{t.1}}"
+						style="width:35px">
+						-<input class="input" type="text" name="tel3" maxlength="4" value="{{t.2}}"
+						style="width:35px">
+					{% else %}
+						<input class="input" type="text" name="tel1" maxlength="3" 
+						style="width:30px">
+						-<input class="input" type="text" name="tel2" maxlength="4" 
+						style="width:35px">
+						-<input class="input" type="text" name="tel3" maxlength="4" 
+						style="width:35px">
+					
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<th> 부서 </th>
+				<td>
+					&nbsp;<select name="depart">
+						<option value="선택안함"> 선택안함 </option>
+						<option value="영업부"> 영업부 </option>
+						<option value="관리부"> 관리부 </option>
+						<option value="경리부"> 경리부 </option>
+						<option value="개발부"> 개발부 </option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th> 입사일 </th>
+				<td>
+					&nbsp;{{dto.logtime|date:"Y-m-d H:i"}}
+				</td>
+			</tr>
+			<tr>
+				<th colspan="2"> 
+					<input class="inputbutton" type="submit" value="수정">
+					<input class="inputbutton" type="reset" value="취소">
+					<input class="inputbutton" type="button" value="수정취소"
+						onclick="location='main'">
+				</th>
+			</tr>
+		</table>
+	</form>
+	
+	{% endblock %}
+</body>
+</html>
